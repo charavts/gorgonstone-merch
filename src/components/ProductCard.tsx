@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Product, Size } from '../context/CartContext';
+import { useLanguage } from '../context/LanguageContext';
 
 interface ProductCardProps {
   product: Product;
@@ -11,6 +12,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
   const [isHovered, setIsHovered] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [selectedSize, setSelectedSize] = useState<Size>('Medium');
+  const { t } = useLanguage();
 
   const handleAddToCart = () => {
     onAddToCart(product, selectedSize);
@@ -43,7 +45,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
       
       {/* Size Selection */}
       <div className="mb-4 w-full">
-        <label className="text-white text-sm mb-2 block text-center">Size:</label>
+        <label className="text-white text-sm mb-2 block text-center">{t('home.sizeLabel')}</label>
         <div className="flex gap-2 justify-center">
           {(['Small', 'Medium', 'Large'] as Size[]).map((size) => (
             <button
@@ -65,7 +67,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
         onClick={handleAddToCart}
         className="bg-black hover:bg-[#444] text-white px-6 py-3 rounded-lg transition-colors relative"
       >
-        {showSuccess ? 'Added to Cart!' : 'Add to Cart'}
+        {showSuccess ? `${t('home.addToCart')}!` : t('home.addToCart')}
       </button>
     </div>
   );

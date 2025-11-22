@@ -59,9 +59,10 @@ app.post("/make-server-deab0cbd/create-checkout", async (c) => {
     });
 
     const body = await c.req.json();
-    const { items } = body;
+    const { items, locale } = body;
 
     console.log("Received items:", JSON.stringify(items));
+    console.log("Received locale:", locale);
 
     if (!items || !Array.isArray(items) || items.length === 0) {
       console.error("Invalid items provided:", items);
@@ -86,6 +87,10 @@ app.post("/make-server-deab0cbd/create-checkout", async (c) => {
     // Get the base URL from origin
     const origin = c.req.header("origin") || "https://gorgonstone-merch.verch.app";
     
+    // Determine Stripe locale - 'el' for Greek, 'en' for English (default)
+    const stripeLocale = locale === 'el' ? 'el' : 'en';
+    console.log(`Setting Stripe checkout locale to: ${stripeLocale}`);
+    
     // Create checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
@@ -93,6 +98,7 @@ app.post("/make-server-deab0cbd/create-checkout", async (c) => {
       mode: "payment",
       success_url: `${origin}/#/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/#/cart`,
+      locale: stripeLocale, // Set the language for Stripe Checkout
       phone_number_collection: {
         enabled: true,
       },

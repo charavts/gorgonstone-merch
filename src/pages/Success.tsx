@@ -2,11 +2,13 @@ import { useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { CheckCircle, Package, ArrowRight } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Success() {
   const [searchParams] = useSearchParams();
   const sessionId = searchParams.get('session_id');
   const { clearCart } = useCart();
+  const { t } = useLanguage();
 
   useEffect(() => {
     // Clear cart on successful purchase
@@ -25,12 +27,12 @@ export default function Success() {
 
         {/* Main Message */}
         <div className="text-center mb-8">
-          <h1 className="text-white mb-4">Η Παραγγελία σας Ολοκληρώθηκε!</h1>
+          <h1 className="text-white mb-4">{t('success.title')}</h1>
           <p className="text-white/90 text-lg mb-4">
-            Ευχαριστούμε για την αγορά σας! 🎉
+            {t('success.thanks')}
           </p>
           <p className="text-white/70 mb-2">
-            Θα λάβετε email επιβεβαίωση�� σύντομα με τις λεπτομέρειες της παραγγελίας σας.
+            {t('success.emailConfirm')}
           </p>
         </div>
 
@@ -40,7 +42,7 @@ export default function Success() {
             <div className="flex items-center justify-center gap-3 text-white/80">
               <Package size={20} />
               <div>
-                <p className="text-white/60 text-sm mb-1">Order ID</p>
+                <p className="text-white/60 text-sm mb-1">{t('success.orderId')}</p>
                 <p className="text-white font-mono text-sm break-all">
                   {sessionId}
                 </p>
@@ -52,8 +54,7 @@ export default function Success() {
         {/* Thank You Message */}
         <div className="bg-white/5 rounded-lg p-6 mb-8 border border-white/10">
           <p className="text-white/90 text-center leading-relaxed">
-            Το <span className="font-semibold text-white">Gorgonstone</span> σας ευχαριστεί που επιλέξατε τα προϊόντα μας. 
-            Κάθε t-shirt είναι φτιαγμένο με αγάπη και εμπνευσμένο από την αρχαία ελληνική μυθολογία.
+            {t('success.message')}
           </p>
         </div>
 
@@ -61,7 +62,7 @@ export default function Success() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link to="/" className="flex-1 sm:flex-initial">
             <button className="w-full bg-black hover:bg-[#333] text-white px-8 py-4 rounded-lg transition-colors flex items-center justify-center gap-2 group">
-              <span>Συνέχεια Αγορών</span>
+              <span>{t('success.continueShopping')}</span>
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </Link>

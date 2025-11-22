@@ -1,7 +1,10 @@
 import { Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Footer() {
+  const { t } = useLanguage();
+  
   return (
     <footer className="bg-[#6a6562] border-t border-white/10 mt-auto">
       <div className="max-w-7xl mx-auto px-5 py-8">
@@ -12,10 +15,10 @@ export default function Footer() {
           {/* Contact Email */}
           <div className="text-center">
             <a
-              href="mailto:infogorgestone@gmail.com"
+              href="mailto:infogorgonstone@gmail.com"
               className="text-white/80 hover:text-white transition-colors"
             >
-              infogorgestone@gmail.com
+              infogorgonstone@gmail.com
             </a>
           </div>
           
@@ -39,21 +42,21 @@ export default function Footer() {
           {/* Copyright & Links */}
           <div className="text-center">
             <p className="text-white/60 text-sm mb-2">
-              © 2025 Gorgonstone. All rights reserved.
+              {t('footer.copyright')}
             </p>
             <div className="flex gap-4 justify-center text-white/50 text-sm">
               <Link 
                 to="/privacy-policy" 
                 className="hover:text-white/70 transition-colors"
               >
-                Privacy Policy
+                {t('footer.privacyPolicy')}
               </Link>
               <span>•</span>
               <Link 
                 to="/terms-of-service" 
                 className="hover:text-white/70 transition-colors"
               >
-                Terms of Service
+                {t('footer.termsOfService')}
               </Link>
             </div>
           </div>

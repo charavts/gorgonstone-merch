@@ -4,10 +4,12 @@ import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { Link } from 'react-router-dom';
 import { projectId, publicAnonKey } from '../utils/supabase/info';
 import { useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Cart() {
   const { cartItems, removeFromCart, updateQuantity, getCartTotal, clearCart } = useCart();
   const [isLoading, setIsLoading] = useState(false);
+  const { t, language } = useLanguage();
 
   const handleCheckout = async () => {
     if (cartItems.length === 0) return;
@@ -17,6 +19,7 @@ export default function Cart() {
     try {
       console.log('Starting checkout process...');
       console.log('Cart items:', cartItems);
+      console.log('Selected language:', language);
       
       // Call Supabase Edge Function to create Stripe checkout session
       const url = `https://${projectId}.supabase.co/functions/v1/make-server-deab0cbd/create-checkout`;
@@ -38,6 +41,7 @@ export default function Cart() {
             size: item.size,
             image: item.image,
           })),
+          locale: language === 'el' ? 'el' : 'en', // Pass language preference to backend
         }),
       });
 
@@ -82,13 +86,13 @@ export default function Cart() {
       <main className="pt-24 pb-16 px-5 min-h-screen flex items-center justify-center">
         <div className="max-w-md w-full bg-[#6a6562] rounded-lg shadow-2xl p-12 text-center">
           <ShoppingBag size={64} className="text-white/50 mx-auto mb-6" />
-          <h2 className="text-white mb-4">Your Cart is Empty</h2>
+          <h2 className="text-white mb-4">{t('cart.empty')}</h2>
           <p className="text-white/70 mb-6">
             Add some products to your cart to get started!
           </p>
           <Link to="/">
             <button className="bg-black hover:bg-[#444] text-white px-8 py-3 rounded-lg transition-colors">
-              Continue Shopping
+              {t('cart.continueShopping')}
             </button>
           </Link>
         </div>
@@ -100,7 +104,7 @@ export default function Cart() {
     <main className="pt-24 pb-16 px-5 min-h-screen">
       <div className="max-w-4xl mx-auto">
         <div className="bg-[#6a6562] rounded-lg shadow-2xl p-6 md:p-8">
-          <h1 className="text-white mb-6">Shopping Cart</h1>
+          <h1 className="text-white mb-6">{t('cart.title')}</h1>
           
           <div className="space-y-4 mb-6">
             {cartItems.map((item) => (
@@ -122,7 +126,7 @@ export default function Cart() {
                     {item.price}€ each
                   </p>
                   <p className="text-white/60 text-sm mt-1">
-                    Size: {item.size}
+                    {t('cart.size')}: {item.size}
                   </p>
                 </div>
                 
@@ -160,14 +164,14 @@ export default function Cart() {
           
           <div className="border-t border-white/20 pt-6">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-white">Total:</h2>
+              <h2 className="text-white">{t('cart.total')}:</h2>
               <h2 className="text-white">{getCartTotal().toFixed(2)}€</h2>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/" className="flex-1">
                 <button className="w-full bg-[#444] hover:bg-[#555] text-white px-6 py-4 rounded-lg transition-colors">
-                  Continue Shopping
+                  {t('cart.continueShopping')}
                 </button>
               </Link>
               <button
@@ -175,7 +179,7 @@ export default function Cart() {
                 disabled={isLoading}
                 className="flex-1 bg-black hover:bg-[#333] text-white px-6 py-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isLoading ? 'Processing...' : 'Continue with Purchase'}
+                {isLoading ? t('cart.processing') : t('cart.continuePurchase')}
               </button>
             </div>
           </div>
