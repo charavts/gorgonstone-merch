@@ -4,18 +4,18 @@ export default function Info() {
   return (
     <main className="pt-24 pb-8 px-5">
       <div className="max-w-4xl mx-auto bg-[#6a6562] rounded-lg p-8 shadow-lg">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div className="flex items-center justify-center">
-            <div className="w-64 h-64">
-              <ImageWithFallback
-                src="https://raw.githubusercontent.com/charavts/Gorgonstone-merch/main/src/public/logo.png"
-                alt="Gorgonstone Logo"
-                className="w-full h-full object-contain"
-              />
-            </div>
+        {/* Centered Logo at top */}
+        <div className="flex justify-center mb-8">
+          <div className="w-64 h-64">
+            <ImageWithFallback
+              src="https://raw.githubusercontent.com/charavts/Gorgonstone-merch/main/src/public/logo.png"
+              alt="Gorgonstone Logo"
+              className="w-full h-full object-contain"
+            />
           </div>
         </div>
 
+        {/* Text section below */}
         <div className="bg-[#56514f] rounded-lg p-8">
           <div className="text-white space-y-4">
             <p className="text-white/90 leading-relaxed">
