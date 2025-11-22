@@ -51,13 +51,6 @@ export default function Success() {
           </div>
         )}
 
-        {/* Thank You Message */}
-        <div className="bg-white/5 rounded-lg p-6 mb-8 border border-white/10">
-          <p className="text-white/90 text-center leading-relaxed">
-            {t('success.message')}
-          </p>
-        </div>
-
         {/* Actions */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link to="/" className="flex-1 sm:flex-initial">

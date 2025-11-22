@@ -38,10 +38,9 @@ const translations = {
     
     // Success Page
     'success.title': 'Η Παραγγελία σας Ολοκληρώθηκε!',
-    'success.thanks': 'Ευχαριστούμε για την αγορά σας! 🎉',
+    'success.thanks': 'Ευχαριστούμε για την αγορά σας!',
     'success.emailConfirm': 'Θα λάβετε email επιβεβαίωσης σύντομα με τις λεπτομέρειες της παραγγελίας σας.',
     'success.orderId': 'Order ID',
-    'success.message': 'Το Gorgonstone σας ευχαριστεί που επιλέξατε τα προϊόντα μας. Κάθε t-shirt είναι φτιαγμένο με αγάπη και εμπνευσμένο από την αρχαία ελληνική μυθολογία.',
     'success.continueShopping': 'Συνέχεια Αγορών',
     
     // Contact Page
@@ -61,7 +60,7 @@ const translations = {
     'info.title': 'Σχετικά με το Gorgonstone',
     'info.subtitle': 'Όπου η μυθολογία συναντά τη μόδα',
     'info.story': 'Η Ιστορία μας',
-    'info.storyText': 'Το Gorgonstone γεννήθηκε από το πάθος για την αρχαία ελληνική μυθολογία και την τέχνη. Κάθε σχέδιό μας εμπνέεται από τον μύθο του Περσέα και της Μέδουσας, φέρνοντας την αρχαία ιστορία στο σύγχρονο streetwear.',
+    'info.storyText': 'Το Gorgonstone γεννήθηκε από το πάθος για την αρχαία ελληνική ��υθολογία και την τέχνη. Κάθε σχέδιό μας εμπνέεται από τον μύθο του Περσέα και της Μέδουσας, φέρνοντας την αρχαία ιστορία στο σύγχρονο streetwear.',
     'info.quality': 'Ποιότητα',
     'info.qualityText': 'Χρησιμοποιούμε μόνο premium υλικά και τεχνικές εκτύπωσης για να διασφαλίσουμε ότι κάθε κομμάτι είναι ανθεκτικό και άνετο.',
     'info.mission': 'Η Αποστολή μας',
@@ -99,10 +98,9 @@ const translations = {
     
     // Success Page
     'success.title': 'Order Completed Successfully!',
-    'success.thanks': 'Thank you for your purchase! 🎉',
+    'success.thanks': 'Thank you for your purchase!',
     'success.emailConfirm': 'You will receive a confirmation email shortly with your order details.',
     'success.orderId': 'Order ID',
-    'success.message': 'Gorgonstone thanks you for choosing our products. Each t-shirt is crafted with love and inspired by ancient Greek mythology.',
     'success.continueShopping': 'Continue Shopping',
     
     // Contact Page
