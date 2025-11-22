@@ -21,6 +21,8 @@ export default function Cart() {
       // Call Supabase Edge Function to create Stripe checkout session
       const url = `https://${projectId}.supabase.co/functions/v1/make-server-deab0cbd/create-checkout`;
       console.log('Calling URL:', url);
+      console.log('Project ID:', projectId);
+      console.log('Public Anon Key:', publicAnonKey ? 'Present' : 'Missing');
       
       const response = await fetch(url, {
         method: 'POST',
@@ -39,7 +41,10 @@ export default function Cart() {
         }),
       });
 
+      console.log('Response received');
       console.log('Response status:', response.status);
+      console.log('Response ok:', response.ok);
+      
       const data = await response.json();
       console.log('Response data:', data);
 

@@ -10,6 +10,7 @@
       --tw-space-y-reverse: 0;
       --tw-border-style: solid;
       --tw-leading: initial;
+      --tw-font-weight: initial;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
       --tw-shadow-alpha: 100%;
@@ -38,6 +39,9 @@
       --tw-drop-shadow-alpha: 100%;
       --tw-drop-shadow-size: initial;
       --tw-duration: initial;
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-translate-z: 0;
       --tw-scale-x: 1;
       --tw-scale-y: 1;
       --tw-scale-z: 1;
@@ -51,6 +55,7 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --color-red-600: oklch(.577 .245 27.325);
     --color-red-700: oklch(.505 .213 27.518);
+    --color-green-400: oklch(.792 .209 151.711);
     --color-green-500: oklch(.723 .219 149.579);
     --color-gray-100: oklch(.967 .003 264.542);
     --color-black: #000;
@@ -67,10 +72,12 @@
     --text-base: 1rem;
     --text-base--line-height: calc(1.5 / 1);
     --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
     --text-2xl: 1.5rem;
     --font-weight-normal: 400;
     --font-weight-medium: 500;
+    --font-weight-semibold: 600;
     --leading-relaxed: 1.625;
     --default-transition-duration: .15s;
     --default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);
@@ -462,6 +469,10 @@
     margin-top: auto;
   }
 
+  .mb-1 {
+    margin-bottom: calc(var(--spacing) * 1);
+  }
+
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
@@ -684,6 +695,11 @@
     border-radius: var(--radius);
   }
 
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
+
   .border-t {
     border-top-style: var(--tw-border-style);
     border-top-width: 1px;
@@ -729,12 +745,42 @@
     background-color: var(--color-black);
   }
 
+  .bg-black\/20 {
+    background-color: #0003;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-black\/20 {
+      background-color: color-mix(in oklab, var(--color-black) 20%, transparent);
+    }
+  }
+
   .bg-gray-100 {
     background-color: var(--color-gray-100);
   }
 
+  .bg-green-500\/20 {
+    background-color: color-mix(in srgb, oklch(.723 .219 149.579) 20%, transparent);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-green-500\/20 {
+      background-color: color-mix(in oklab, var(--color-green-500) 20%, transparent);
+    }
+  }
+
   .bg-red-600 {
     background-color: var(--color-red-600);
+  }
+
+  .bg-white\/5 {
+    background-color: #ffffff0d;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-white\/5 {
+      background-color: color-mix(in oklab, var(--color-white) 5%, transparent);
+    }
   }
 
   .object-contain {
@@ -829,6 +875,15 @@
     vertical-align: middle;
   }
 
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
+  }
+
   .text-sm {
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
@@ -844,8 +899,17 @@
     line-height: var(--leading-relaxed);
   }
 
-  .text-green-500 {
-    color: var(--color-green-500);
+  .font-semibold {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .break-all {
+    word-break: break-all;
+  }
+
+  .text-green-400 {
+    color: var(--color-green-400);
   }
 
   .text-white {
@@ -939,6 +1003,13 @@
   .duration-300 {
     --tw-duration: .3s;
     transition-duration: .3s;
+  }
+
+  @media (hover: hover) {
+    .group-hover\:translate-x-1:is(:where(.group):hover *) {
+      --tw-translate-x: calc(var(--spacing) * 1);
+      translate: var(--tw-translate-x) var(--tw-translate-y);
+    }
   }
 
   @media (hover: hover) {
@@ -1051,6 +1122,12 @@
   @media (width >= 40rem) {
     .sm\:w-6 {
       width: calc(var(--spacing) * 6);
+    }
+  }
+
+  @media (width >= 40rem) {
+    .sm\:flex-initial {
+      flex: 0 auto;
     }
   }
 
@@ -1258,6 +1335,11 @@ html {
   inherits: false
 }
 
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false
+}
+
 @property --tw-shadow {
   syntax: "*";
   inherits: false;
@@ -1406,6 +1488,24 @@ html {
 @property --tw-duration {
   syntax: "*";
   inherits: false
+}
+
+@property --tw-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-translate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
 }
 
 @property --tw-scale-x {

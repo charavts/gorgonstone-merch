@@ -3,12 +3,13 @@ import { cors } from "npm:hono/cors";
 import { logger } from "npm:hono/logger";
 import Stripe from "npm:stripe@17.4.0";
 import * as kv from "./kv_store.tsx";
+
 const app = new Hono();
 
 // Enable logger
 app.use('*', logger(console.log));
 
-// Enable CORS for all routes and methods
+// Enable CORS for all routes and methods - MUST be before all routes
 app.use(
   "/*",
   cors({
@@ -17,12 +18,23 @@ app.use(
     allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     exposeHeaders: ["Content-Length"],
     maxAge: 600,
+    credentials: false,
   }),
 );
 
+// Handle preflight requests explicitly
+app.options("/*", (c) => {
+  return c.text("", 204);
+});
+
 // Health check endpoint
 app.get("/make-server-deab0cbd/health", (c) => {
-  return c.json({ status: "ok" });
+  console.log("Health check called");
+  return c.json({ 
+    status: "ok", 
+    timestamp: new Date().toISOString(),
+    version: "1.0.0"
+  });
 });
 
 // Create Stripe checkout session
@@ -35,6 +47,11 @@ app.post("/make-server-deab0cbd/create-checkout", async (c) => {
       console.error("Stripe secret key not found in environment variables");
       return c.json({ error: "Stripe configuration error - missing secret key" }, 500);
     }
+
+    // Log the key type (test vs live) - SAFE to log, shows only prefix
+    const keyPrefix = stripeSecretKey.substring(0, 8); // Shows "sk_test_" or "sk_live_"
+    console.log(`✅ Stripe key type detected: ${keyPrefix}...`);
+    console.log(`🔑 Using ${keyPrefix.includes('test') ? 'TEST' : 'LIVE'} mode`);
 
     console.log("Stripe key found, initializing Stripe...");
     const stripe = new Stripe(stripeSecretKey, {
@@ -76,6 +93,12 @@ app.post("/make-server-deab0cbd/create-checkout", async (c) => {
       mode: "payment",
       success_url: `${origin}/#/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/#/cart`,
+      phone_number_collection: {
+        enabled: true,
+      },
+      shipping_address_collection: {
+        allowed_countries: ['GR', 'CY', 'US', 'GB', 'DE', 'FR', 'IT', 'ES', 'NL', 'BE', 'AT', 'SE', 'DK', 'NO', 'FI', 'PT', 'IE', 'LU', 'CH'],
+      },
     });
 
     console.log("Checkout session created successfully:", session.id);

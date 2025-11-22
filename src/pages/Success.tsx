@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, Package, ArrowRight } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
 export default function Success() {
@@ -15,25 +15,57 @@ export default function Success() {
 
   return (
     <main className="pt-24 pb-16 px-5 min-h-screen flex items-center justify-center">
-      <div className="max-w-md w-full bg-[#6a6562] rounded-lg shadow-2xl p-12 text-center">
-        <CheckCircle size={64} className="text-green-500 mx-auto mb-6" />
-        <h1 className="text-white mb-4">Payment Successful!</h1>
-        <p className="text-white/70 mb-2">
-          Thank you for your purchase!
-        </p>
-        <p className="text-white/70 mb-8">
-          You will receive a confirmation email shortly.
-        </p>
-        {sessionId && (
-          <p className="text-white/50 text-sm mb-8">
-            Order ID: {sessionId.slice(0, 20)}...
+      <div className="max-w-2xl w-full bg-[#6a6562] rounded-lg shadow-2xl p-8 md:p-12">
+        {/* Success Icon */}
+        <div className="flex justify-center mb-6">
+          <div className="bg-green-500/20 rounded-full p-4">
+            <CheckCircle size={80} className="text-green-400" strokeWidth={2} />
+          </div>
+        </div>
+
+        {/* Main Message */}
+        <div className="text-center mb-8">
+          <h1 className="text-white mb-4">Η Παραγγελία σας Ολοκληρώθηκε!</h1>
+          <p className="text-white/90 text-lg mb-4">
+            Ευχαριστούμε για την αγορά σας! 🎉
           </p>
+          <p className="text-white/70 mb-2">
+            Θα λάβετε email επιβεβαίωση�� σύντομα με τις λεπτομέρειες της παραγγελίας σας.
+          </p>
+        </div>
+
+        {/* Order Details */}
+        {sessionId && (
+          <div className="bg-black/20 rounded-lg p-6 mb-8">
+            <div className="flex items-center justify-center gap-3 text-white/80">
+              <Package size={20} />
+              <div>
+                <p className="text-white/60 text-sm mb-1">Order ID</p>
+                <p className="text-white font-mono text-sm break-all">
+                  {sessionId}
+                </p>
+              </div>
+            </div>
+          </div>
         )}
-        <Link to="/">
-          <button className="bg-black hover:bg-[#444] text-white px-8 py-3 rounded-lg transition-colors">
-            Continue Shopping
-          </button>
-        </Link>
+
+        {/* Thank You Message */}
+        <div className="bg-white/5 rounded-lg p-6 mb-8 border border-white/10">
+          <p className="text-white/90 text-center leading-relaxed">
+            Το <span className="font-semibold text-white">Gorgonstone</span> σας ευχαριστεί που επιλέξατε τα προϊόντα μας. 
+            Κάθε t-shirt είναι φτιαγμένο με αγάπη και εμπνευσμένο από την αρχαία ελληνική μυθολογία.
+          </p>
+        </div>
+
+        {/* Actions */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link to="/" className="flex-1 sm:flex-initial">
+            <button className="w-full bg-black hover:bg-[#333] text-white px-8 py-4 rounded-lg transition-colors flex items-center justify-center gap-2 group">
+              <span>Συνέχεια Αγορών</span>
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </Link>
+        </div>
       </div>
     </main>
   );
