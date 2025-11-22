@@ -1,13 +1,27 @@
 import { useLanguage } from '../context/LanguageContext';
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 
 export default function Info() {
   const { language } = useLanguage();
 
   return (
     <main className="pt-24 pb-8 px-5">
+      {/* Logo Section */}
+      <div className="mb-3">
+        <div className="py-0">
+          <div className="max-w-[320px] mx-auto px-5 flex justify-center">
+            <ImageWithFallback
+              src="https://raw.githubusercontent.com/charavts/Gorgonstone-merch/main/src/public/logo.png"
+              alt="Gorgonstone Logo"
+              className="w-[300px] max-w-[80vw] h-auto opacity-90"
+            />
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-4xl mx-auto bg-[#6a6562] rounded-lg p-8 shadow-lg mb-8">
         {/* Title */}
-        <h1 className="text-white text-center mb-6">
+        <h1 className="text-white mb-6">
           {language === 'el' ? 'Σχετικά' : 'About'}
         </h1>
         
@@ -17,13 +31,13 @@ export default function Info() {
             {language === 'el' ? (
               <>
                 <p className="text-white/90 leading-relaxed">
-                  Αυτό το art-driven T-shirt project βασίζεται σε μια βαθιά ευαισθησία απέναντι στην αισθητική, την ιστορία και τη πολιτιστική δύναμη του αρχαίου κόσμου. Κάθε σχέδιο εμπνέεται από τους μύθους, τους ήρωες και τους δαίμονες που διαμόρφωσαν τους πρώτους πολιτισμούς, γιορτάζοντας την αιώνια σύνδεση μεταξύ αφήγησης και οπτικής τέχνης.
+                  Αυτό το art-driven T-shirt project βασίζεται σε μια βαθιά ευαισθησία απένα��τι στην αισθητική, την ιστορία και τη πολιτιστική δύναμη του αρχαίου κόσμου. Κάθε σχέδιο εμπνέεται από τους μύθους, τους ήρωες και τους δαίμονες που διαμόρφωσαν τους πρώτους πολιτισμούς, γιορτάζοντας την αιώνια σύνδεση μεταξύ αφήγησης και οπτικής τέχνης.
                 </p>
                 <p className="text-white/90 leading-relaxed">
                   Η βασική έμπνευση προέρχεται από τον θρυλικό μύθο του Περσέα και της Μέδουσας—ένα αιώνιο σύμβολο θάρρους, μεταμόρφωσης και της θολής γραμμής μεταξύ τέρατος και μύθου. Μαζί με την ευρύτερη εποχή των ηρώων, αυτές οι αφηγήσεις τροφοδοτούν μια συλλογή που συνδυάζει τον αρχαίο συμβολισμό με τη σύγχρονη έκφραση.
                 </p>
                 <p className="text-white/90 leading-relaxed">
-                  Κάθε κομμάτι στοχεύει να φέρει το πνεύμα της αρχαιότητας στο παρόν, επιτρέποντας στους φορείς να μεταφέρουν θραύσματα μύθου, γλυπτικής και ιστορίας ως ζωντανές μορφές τέχνης.
+                  Κάθε κομμάτι στοχεύει να φέρει το πνεύμα της αρχαιότητας στο παρόν, επιτρέποντας στους φορείς να εταφέρουν θραύσματα μύθου, γλυπτικής και ιστορίας ως ζωντανές μορφές τέχνης.
                 </p>
               </>
             ) : (

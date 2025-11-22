@@ -21,9 +21,9 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
   };
 
   return (
-    <div className="w-[300px] flex flex-col items-center justify-between bg-[#6a6562] rounded-lg p-5 shadow-lg transition-transform hover:scale-105">
+    <div className="w-[300px] flex flex-col items-center justify-between bg-[#56514f] rounded-lg p-5 shadow-lg transition-transform hover:scale-105">
       <div 
-        className="w-full h-[300px] flex items-center justify-center bg-[#56514f] rounded-lg overflow-hidden"
+        className="w-full h-[300px] flex items-center justify-center bg-[#6a6562] rounded-lg overflow-hidden"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -54,7 +54,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
               className={`px-4 py-2 rounded transition-colors ${
                 selectedSize === size
                   ? 'bg-black text-white'
-                  : 'bg-[#56514f] text-white/70 hover:bg-[#444] hover:text-white'
+                  : 'bg-[#6a6562] text-white/70 hover:bg-[#777] hover:text-white'
               }`}
             >
               {size}

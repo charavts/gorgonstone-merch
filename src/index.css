@@ -489,6 +489,10 @@
     margin-bottom: calc(var(--spacing) * 8);
   }
 
+  .mb-12 {
+    margin-bottom: calc(var(--spacing) * 12);
+  }
+
   .ml-4 {
     margin-left: calc(var(--spacing) * 4);
   }
@@ -575,6 +579,10 @@
 
   .max-w-\[80vw\] {
     max-width: 80vw;
+  }
+
+  .max-w-\[320px\] {
+    max-width: 320px;
   }
 
   .max-w-md {
@@ -813,6 +821,10 @@
     padding-inline: calc(var(--spacing) * 8);
   }
 
+  .py-0 {
+    padding-block: calc(var(--spacing) * 0);
+  }
+
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
@@ -1022,6 +1034,12 @@
   @media (hover: hover) {
     .hover\:bg-\[\#555\]:hover {
       background-color: #555;
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:bg-\[\#777\]:hover {
+      background-color: #777;
     }
   }
 

@@ -1,6 +1,7 @@
 import { useCart } from '../context/CartContext';
 import { Product } from '../context/CartContext';
 import ProductCard from '../components/ProductCard';
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 
 const products: Product[] = [
   {
@@ -45,6 +46,20 @@ export default function Home() {
 
   return (
     <main className="pt-24 pb-8 px-5">
+      {/* Logo Section */}
+      <div className="mb-12">
+        <div className="py-0">
+          <div className="max-w-[320px] mx-auto px-5 flex justify-center">
+            <ImageWithFallback
+              src="https://raw.githubusercontent.com/charavts/Gorgonstone-merch/main/src/public/logo.png"
+              alt="Gorgonstone Logo"
+              className="w-[300px] max-w-[80vw] h-auto opacity-90"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Products Grid */}
       <div className="flex flex-wrap justify-start gap-6 max-w-7xl mx-auto">
         {products.map((product) => (
           <ProductCard

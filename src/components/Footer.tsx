@@ -1,24 +1,12 @@
 import { Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { ImageWithFallback } from './figma/ImageWithFallback';
 
 export default function Footer() {
   const { t } = useLanguage();
   
   return (
     <footer className="bg-[#56514f] mt-auto">
-      {/* Decorative section with lighter background */}
-      <div className="bg-[#6a6562] py-4">
-        <div className="max-w-7xl mx-auto px-5 flex justify-center">
-          <ImageWithFallback
-            src="https://raw.githubusercontent.com/charavts/Gorgonstone-merch/main/src/public/logo.png"
-            alt="Gorgonstone Logo"
-            className="w-[300px] max-w-[80vw] h-auto opacity-90"
-          />
-        </div>
-      </div>
-      
       {/* Main footer content */}
       <div className="max-w-7xl mx-auto px-5 py-8">
         <div className="flex flex-col items-center gap-3">

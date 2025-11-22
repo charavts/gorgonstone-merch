@@ -18,7 +18,7 @@ export default function App() {
       <CartProvider>
         <Router>
           <ScrollToTop />
-          <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#56514f' }}>
+          <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#6a6562' }}>
             <Header />
             <Routes>
               <Route path="/" element={<Home />} />
