@@ -60,7 +60,7 @@ export default function Home() {
       </div>
 
       {/* Products Grid */}
-      <div className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-7xl mx-auto">
+      <div className="flex flex-wrap justify-center sm:justify-start gap-4 sm:gap-6 max-w-7xl mx-auto">
         {products.map((product) => (
           <ProductCard
             key={product.id}
