@@ -1,4 +1,3 @@
-import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function PrivacyPolicy() {
@@ -238,15 +237,6 @@ export default function PrivacyPolicy() {
             </div>
           )}
         </div>
-      </div>
-
-      {/* Bottom center logo */}
-      <div className="mt-16 mb-8 flex justify-center w-full opacity-80">
-        <ImageWithFallback
-          src="https://raw.githubusercontent.com/charavts/Gorgonstone-merch/main/src/public/logo.png"
-          alt="Gorgonstone Logo"
-          className="w-[450px] max-w-[90vw] h-auto"
-        />
       </div>
     </main>
   );

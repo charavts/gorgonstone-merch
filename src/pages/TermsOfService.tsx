@@ -1,4 +1,3 @@
-import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function TermsOfService() {
@@ -51,7 +50,7 @@ export default function TermsOfService() {
               <section>
                 <h2 className="text-white mb-3">4. Αποστολή και Παράδοση</h2>
                 <p className="text-white/90 leading-relaxed">
-                  Οι χρόνοι και τα κόστη αποστολής ποικίλλουν ανάλογα με την τοποθεσία σας. Μόλις η παραγγελία σας αποσταλεί, θα λάβετε ένα email επιβεβαίωσης με ��ληροφορίες παρακολούθησης. Δεν είμαστε υπεύθυνοι για καθυστερήσεις που προκαλούνται από εταιρείες αποστολών ή τελωνειακές διαδικασίες. Ο κίνδυνος απώλειας μεταβιβάζεται σε εσάς μετά την παράδοση στον μεταφορέα.
+                  Οι χρόνοι και τα κόστη αποστολής ποικίλλουν ανάλογα με την τοποθεσία σας. Μόλις η παραγγελία σας αποσταλεί, θα λάβετε ένα email επιβεβαίωσης με ληροφορίες παρακολούθησης. Δεν είμαστε υπεύθυνοι για καθυστερήσεις που προκαλούνται από εταιρείες αποστολών ή τελωνειακές διαδικασίες. Ο κίνδυνος απώλειας μεταβιβάζεται σε εσάς μετά την παράδοση στον μεταφορέα.
                 </p>
               </section>
 
@@ -75,7 +74,7 @@ export default function TermsOfService() {
               <section>
                 <h2 className="text-white mb-3">7. Χρήση Προϊόντων</h2>
                 <p className="text-white/90 leading-relaxed">
-                  Τα προϊόντα μας εμπ��έονται από την αρχαία μυθολογία και προορίζονται μόνο για προσωπική χρήση. Τα σχέδια είναι καλλιτεχνικές ερμηνείες και δεν αποσκοπούν στην προσβολή οποιωνδήποτε πολιτιστικών ή θρησκευτικών πεποιθήσεων.
+                  Τα προϊόντα μας εμπέονται από την αρχαία μυθολογία και προορίζονται μόνο για προσωπική χρήση. Τα σχέδια είναι καλλιτεχνικές ερμηνείες και δεν αποσκοπούν στην προσβολή οποιωνδήποτε πολιτιστικών ή θρησκευτικών πεποιθήσεων.
                 </p>
               </section>
 
@@ -89,7 +88,7 @@ export default function TermsOfService() {
               <section>
                 <h2 className="text-white mb-3">9. Αποζημίωση</h2>
                 <p className="text-white/90 leading-relaxed">
-                  Συμφωνείτε να αποζημιώσετε και να κρατήσετε την Gorgonstone αβλαβή από οποιεσδήποτε αξιώσεις, ζημίες ή έξοδα που προκύπτουν από τη χρήση του ιστότοπου ή των προϊόντων μας, ή από την παραβίαση αυτών των όρων.
+                  Συμφωνείτε να αποζημιώσετε και να κρατήσετε την Gorgonstone αβ��αβή από οποιεσδήποτε αξιώσεις, ζημίες ή έξοδα που προκύπτουν από τη χρήση του ιστότοπου ή των προϊόντων μας, ή από την παραβίαση αυτών των όρων.
                 </p>
               </section>
 
@@ -242,15 +241,6 @@ export default function TermsOfService() {
             </div>
           )}
         </div>
-      </div>
-
-      {/* Bottom center logo */}
-      <div className="mt-16 mb-8 flex justify-center w-full opacity-80">
-        <ImageWithFallback
-          src="https://raw.githubusercontent.com/charavts/Gorgonstone-merch/main/src/public/logo.png"
-          alt="Gorgonstone Logo"
-          className="w-[450px] max-w-[90vw] h-auto"
-        />
       </div>
     </main>
   );

@@ -461,10 +461,6 @@
     margin-top: calc(var(--spacing) * 8);
   }
 
-  .mt-16 {
-    margin-top: calc(var(--spacing) * 16);
-  }
-
   .mt-auto {
     margin-top: auto;
   }
@@ -561,10 +557,6 @@
     width: 300px;
   }
 
-  .w-\[450px\] {
-    width: 450px;
-  }
-
   .w-full {
     width: 100%;
   }
@@ -581,8 +573,8 @@
     max-width: var(--container-7xl);
   }
 
-  .max-w-\[90vw\] {
-    max-width: 90vw;
+  .max-w-\[80vw\] {
+    max-width: 80vw;
   }
 
   .max-w-md {
@@ -964,8 +956,8 @@
     font-style: italic;
   }
 
-  .opacity-80 {
-    opacity: .8;
+  .opacity-90 {
+    opacity: .9;
   }
 
   .shadow-2xl {

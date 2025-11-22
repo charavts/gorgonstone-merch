@@ -1,5 +1,4 @@
 import { Mail, Send } from 'lucide-react';
-import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function Contact() {
@@ -43,15 +42,6 @@ export default function Contact() {
               {language === 'el' ? 'Συνήθως απαντάμε εντός 24-48 ωρών' : 'We typically respond in 24-48 hours'}
             </p>
           </div>
-        </div>
-
-        {/* Bottom center logo - same as Home page */}
-        <div className="mt-16 mb-8 flex justify-center w-full opacity-80">
-          <ImageWithFallback
-            src="https://raw.githubusercontent.com/charavts/Gorgonstone-merch/main/src/public/logo.png"
-            alt="Gorgonstone Logo"
-            className="w-[450px] max-w-[90vw] h-auto"
-          />
         </div>
       </div>
     </main>

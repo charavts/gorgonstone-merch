@@ -1,7 +1,6 @@
 import { useCart } from '../context/CartContext';
 import { Product } from '../context/CartContext';
 import ProductCard from '../components/ProductCard';
-import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 
 const products: Product[] = [
   {
@@ -54,15 +53,6 @@ export default function Home() {
             onAddToCart={addToCart}
           />
         ))}
-      </div>
-      
-      {/* Bottom center logo - scrolls with page */}
-      <div className="mt-16 mb-8 flex justify-center w-full opacity-80">
-        <ImageWithFallback
-          src="https://raw.githubusercontent.com/charavts/Gorgonstone-merch/main/src/public/logo.png"
-          alt="Gorgonstone Logo"
-          className="w-[450px] max-w-[90vw] h-auto"
-        />
       </div>
     </main>
   );

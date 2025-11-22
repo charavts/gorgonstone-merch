@@ -1,4 +1,3 @@
-import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function Info() {
@@ -6,16 +5,12 @@ export default function Info() {
 
   return (
     <main className="pt-24 pb-8 px-5">
-      {/* Top center logo */}
-      <div className="mb-8 flex justify-center w-full opacity-80">
-        <ImageWithFallback
-          src="https://raw.githubusercontent.com/charavts/Gorgonstone-merch/main/src/public/logo.png"
-          alt="Gorgonstone Logo"
-          className="w-[450px] max-w-[90vw] h-auto"
-        />
-      </div>
-
       <div className="max-w-4xl mx-auto bg-[#6a6562] rounded-lg p-8 shadow-lg mb-8">
+        {/* Title */}
+        <h1 className="text-white text-center mb-6">
+          {language === 'el' ? 'Σχετικά' : 'About'}
+        </h1>
+        
         {/* Text section */}
         <div className="bg-[#56514f] rounded-lg p-8">
           <div className="text-white space-y-4">
