@@ -1,14 +1,15 @@
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import logoImage from 'figma:asset/50d624aa13c522bfa22e236365b881e163b313eb.png';
 
 export default function Info() {
   return (
-    <main className="pt-24 pb-16 px-5 min-h-screen flex items-center justify-center">
-      <div className="max-w-3xl w-full bg-[#6a6562] rounded-lg shadow-2xl p-8 md:p-12">
-        <div className="text-center">
+    <main className="pt-24 pb-8 px-5">
+      <div className="max-w-4xl mx-auto bg-[#6a6562] rounded-lg p-8 shadow-lg">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="flex items-center justify-center">
             <div className="w-64 h-64">
               <ImageWithFallback
-                src="https://github.com/charavts/gorgonstone-merch/blob/main/unnamed-removebg-preview.png?raw=true"
+                src={logoImage}
                 alt="Gorgonstone Logo"
                 className="w-full h-full object-contain"
               />
