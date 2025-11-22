@@ -2,27 +2,74 @@ import { useCart } from '../context/CartContext';
 import { Trash2, Plus, Minus, ShoppingBag } from 'lucide-react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { Link } from 'react-router-dom';
+import { projectId, publicAnonKey } from '../utils/supabase/info';
+import { useState } from 'react';
 
 export default function Cart() {
   const { cartItems, removeFromCart, updateQuantity, getCartTotal, clearCart } = useCart();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     if (cartItems.length === 0) return;
 
-    // For now, open the first item's Stripe link
-    // In a real implementation, you'd create a combined checkout
-    if (cartItems.length === 1) {
-      window.open(cartItems[0].stripeUrl, '_blank');
-    } else {
-      // If multiple items, you could handle differently
-      alert('Please note: Each item will need to be purchased separately through Stripe.');
-      // Open all Stripe links in new tabs
-      cartItems.forEach(item => {
-        window.open(item.stripeUrl, '_blank');
+    setIsLoading(true);
+
+    try {
+      console.log('Starting checkout process...');
+      console.log('Cart items:', cartItems);
+      
+      // Call Supabase Edge Function to create Stripe checkout session
+      const url = `https://${projectId}.supabase.co/functions/v1/make-server-deab0cbd/create-checkout`;
+      console.log('Calling URL:', url);
+      
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${publicAnonKey}`,
+        },
+        body: JSON.stringify({
+          items: cartItems.map(item => ({
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+            size: item.size,
+            image: item.image,
+          })),
+        }),
       });
+
+      console.log('Response status:', response.status);
+      const data = await response.json();
+      console.log('Response data:', data);
+
+      if (!response.ok) {
+        console.error('Checkout error:', data.error);
+        alert(`Failed to create checkout session: ${data.error || 'Unknown error'}`);
+        return;
+      }
+
+      if (data.url) {
+        console.log('Redirecting to Stripe:', data.url);
+        // Clear cart before redirect
+        clearCart();
+        // Redirect to Stripe checkout - use window.top for iframe compatibility
+        try {
+          window.top.location.href = data.url;
+        } catch (e) {
+          // Fallback if top access is blocked
+          window.location.href = data.url;
+        }
+      } else {
+        console.error('No URL in response');
+        alert('Failed to get checkout URL. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error during checkout:', error);
+      alert(`An error occurred: ${error.message}. Please try again.`);
+    } finally {
+      setIsLoading(false);
     }
-    
-    clearCart();
   };
 
   if (cartItems.length === 0) {
@@ -120,9 +167,10 @@ export default function Cart() {
               </Link>
               <button
                 onClick={handleCheckout}
-                className="flex-1 bg-black hover:bg-[#333] text-white px-6 py-4 rounded-lg transition-colors"
+                disabled={isLoading}
+                className="flex-1 bg-black hover:bg-[#333] text-white px-6 py-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Continue with Purchase
+                {isLoading ? 'Processing...' : 'Continue with Purchase'}
               </button>
             </div>
           </div>

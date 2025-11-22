@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Contact from './pages/Contact';
 import Info from './pages/Info';
 import Cart from './pages/Cart';
+import Success from './pages/Success';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 
@@ -22,6 +23,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/info" element={<Info />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/success" element={<Success />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="*" element={<Home />} />
